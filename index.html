@@ -377,20 +377,101 @@ const LOCAL_DB = {
     after: ["노트북 파우치", "노트북 거치대", "노트북 초기설정", "노트북 파우치 추천", "블루투스 마우스", "노트북 쿨러", "노트북 AS 센터", "SSD 업그레이드", "노트북 키스킨", "외장 모니터 추천"],
     intent: "구매 결정 전 정보 수집 단계", sub: "용도와 예산을 좁히는 과정"
   },
+  "러닝화": {
+    keywords: [
+      { keyword: "러닝화 추천", monthlyPcQcCnt: 2200, monthlyMobileQcCnt: 8900 },
+      { keyword: "나이키 러닝화", monthlyPcQcCnt: 3100, monthlyMobileQcCnt: 10200 },
+      { keyword: "아디다스 러닝화", monthlyPcQcCnt: 2400, monthlyMobileQcCnt: 8100 },
+      { keyword: "마라톤화 추천", monthlyPcQcCnt: 900, monthlyMobileQcCnt: 3200 },
+      { keyword: "런닝화 브랜드", monthlyPcQcCnt: 700, monthlyMobileQcCnt: 2800 },
+      { keyword: "쿠션 좋은 러닝화", monthlyPcQcCnt: 600, monthlyMobileQcCnt: 2500 },
+      { keyword: "가벼운 러닝화", monthlyPcQcCnt: 800, monthlyMobileQcCnt: 3100 },
+      { keyword: "러닝화 사이즈", monthlyPcQcCnt: 500, monthlyMobileQcCnt: 2200 },
+      { keyword: "트레일 러닝화", monthlyPcQcCnt: 700, monthlyMobileQcCnt: 2600 },
+      { keyword: "여성 러닝화 추천", monthlyPcQcCnt: 1100, monthlyMobileQcCnt: 4800 },
+    ],
+    before: ["달리기 시작하기", "마라톤 입문", "운동화 추천", "조깅 준비물", "러닝 입문", "유산소 운동 추천", "5km 달리기 준비", "운동 시작하기", "헬스 vs 러닝", "체중감량 운동"],
+    after: ["러닝 양말 추천", "깔창 추천", "러닝화 세탁법", "러닝 복장", "러닝 앱 추천", "러닝 페이스", "러닝화 수명", "발볼 넓은 러닝화", "러닝 후 스트레칭", "무릎 보호대"],
+    intent: "스포츠 활동 시작 준비 단계", sub: "달리기를 막 시작하거나 장비를 업그레이드하려는 단계"
+  },
+  "원룸 인테리어": {
+    keywords: [
+      { keyword: "원룸 인테리어 셀프", monthlyPcQcCnt: 1800, monthlyMobileQcCnt: 6200 },
+      { keyword: "원룸 꾸미기", monthlyPcQcCnt: 2100, monthlyMobileQcCnt: 7800 },
+      { keyword: "1인 가구 인테리어", monthlyPcQcCnt: 1500, monthlyMobileQcCnt: 5400 },
+      { keyword: "원룸 가구 추천", monthlyPcQcCnt: 1200, monthlyMobileQcCnt: 4600 },
+      { keyword: "자취방 꾸미기", monthlyPcQcCnt: 2400, monthlyMobileQcCnt: 9100 },
+      { keyword: "원룸 수납 아이디어", monthlyPcQcCnt: 900, monthlyMobileQcCnt: 3800 },
+      { keyword: "이케아 원룸", monthlyPcQcCnt: 1100, monthlyMobileQcCnt: 4200 },
+      { keyword: "원룸 조명 추천", monthlyPcQcCnt: 700, monthlyMobileQcCnt: 3100 },
+      { keyword: "원룸 침대 추천", monthlyPcQcCnt: 1600, monthlyMobileQcCnt: 6800 },
+      { keyword: "소형 평수 인테리어", monthlyPcQcCnt: 600, monthlyMobileQcCnt: 2400 },
+    ],
+    before: ["원룸 이사 준비", "자취 준비물 리스트", "원룸 구하는 법", "신혼 원룸", "혼자 살기", "이사 체크리스트", "원룸 월세", "자취 필수템", "이사 비용", "원룸 계약"],
+    after: ["인테리어 소품 쇼핑몰", "커튼 추천", "원룸 청소 팁", "다이소 인테리어", "벽 꾸미기", "수납 박스 추천", "원룸 환기", "블라인드 추천", "포스터 액자", "러그 추천"],
+    intent: "이사 후 공간 꾸미기 단계", sub: "저렴하고 효율적으로 공간을 꾸미려는 1인 가구"
+  },
+  "다이어트 식단": {
+    keywords: [
+      { keyword: "다이어트 식단표", monthlyPcQcCnt: 2800, monthlyMobileQcCnt: 9400 },
+      { keyword: "일주일 다이어트 식단", monthlyPcQcCnt: 1900, monthlyMobileQcCnt: 7200 },
+      { keyword: "저탄고지 식단", monthlyPcQcCnt: 1600, monthlyMobileQcCnt: 5800 },
+      { keyword: "간헐적 단식 식단", monthlyPcQcCnt: 2100, monthlyMobileQcCnt: 7600 },
+      { keyword: "닭가슴살 다이어트", monthlyPcQcCnt: 1400, monthlyMobileQcCnt: 5200 },
+      { keyword: "다이어트 도시락", monthlyPcQcCnt: 1100, monthlyMobileQcCnt: 4800 },
+      { keyword: "칼로리 낮은 음식", monthlyPcQcCnt: 900, monthlyMobileQcCnt: 3900 },
+      { keyword: "단백질 식단", monthlyPcQcCnt: 1200, monthlyMobileQcCnt: 4600 },
+      { keyword: "다이어트 아침 식단", monthlyPcQcCnt: 800, monthlyMobileQcCnt: 3500 },
+      { keyword: "살빠지는 음식", monthlyPcQcCnt: 1700, monthlyMobileQcCnt: 6900 },
+    ],
+    before: ["살 빠지는 법", "다이어트 방법", "체중 감량", "빠르게 살빼기", "다이어트 시작", "체지방 줄이기", "다이어트 동기부여", "BMI 계산", "뱃살 빼는 법", "다이어트 계획"],
+    after: ["단백질 쉐이크 추천", "다이어트 보조제", "운동 루틴", "체중계 추천", "칼로리 계산 앱", "다이어트 간식", "요요 방지", "근손실 없이 다이어트", "식욕 억제", "다이어트 후기"],
+    intent: "다이어트 실천 계획 수립 단계", sub: "구체적인 식단표와 메뉴를 찾고 있는 단계"
+  },
 };
 
 function getLocalData(kw) {
   if (LOCAL_DB[kw]) return LOCAL_DB[kw];
-  return {
-    keywords: [
-      { keyword: kw + " 추천", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
-      { keyword: kw + " 가격", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
-      { keyword: kw + " 비교", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
-    ],
-    before: [kw + " 종류", kw + " 정보", "관련 카테고리 탐색"],
-    after: [kw + " 사용법", kw + " 관리", kw + " 액세서리"],
-    intent: `"${kw}" 검색자 의도 추정`, sub: "의미 기반 추론 — API 키 설정 시 실데이터로 대체됩니다"
-  };
+  return null;
+}
+
+async function fetchClaudeAnalysis(kw) {
+  const prompt = `당신은 한국 검색 시장 전문가입니다. 아래 키워드를 분석해서 반드시 JSON만 출력하세요. 다른 텍스트는 절대 포함하지 마세요.
+
+키워드: "${kw}"
+
+다음 JSON 형식으로만 답하세요:
+{
+  "keywords": [
+    {"keyword": "연관키워드1", "monthlyPcQcCnt": 숫자, "monthlyMobileQcCnt": 숫자},
+    ...10개
+  ],
+  "before": ["검색전키워드1", ...10개],
+  "after": ["검색후키워드1", ...10개],
+  "intent": "한 줄 검색 의도 요약",
+  "sub": "구체적인 설명 한 줄"
+}
+
+규칙:
+- keywords: 실제 네이버 검색량에 근접한 추정치 사용 (PC는 모바일의 20~30% 수준)
+- before: 이 키워드 검색 전에 탐색했을 상위 카테고리/관련 키워드
+- after: 구매/결정 후 찾아볼 관리·부속품·사용법 키워드
+- 모든 키워드는 실제 한국인이 검색할 법한 자연스러운 표현으로`;
+
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 1000,
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+
+  if (!res.ok) throw new Error("Claude API 오류");
+  const data = await res.json();
+  const text = data.content[0].text.replace(/```json|```/g, "").trim();
+  return JSON.parse(text);
 }
 
 // ───── 분석 실행 ─────
@@ -400,7 +481,7 @@ async function analyze() {
 
   addHistory(kw);
   const main = document.getElementById('main');
-  main.innerHTML = `<div class="loading-msg"><span class="spinner"></span> 분석 중...</div>`;
+  main.innerHTML = `<div class="loading-msg"><span class="spinner"></span> Claude가 키워드를 분석 중입니다...</div>`;
 
   const keys = loadKeys();
   let keywords = [];
@@ -418,7 +499,27 @@ async function analyze() {
     }
   }
 
-  const local = getLocalData(kw);
+  let local = getLocalData(kw);
+
+  if (!local) {
+    try {
+      local = await fetchClaudeAnalysis(kw);
+      LOCAL_DB[kw] = local;
+    } catch(e) {
+      local = {
+        keywords: [
+          { keyword: kw + " 추천", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
+          { keyword: kw + " 가격", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
+          { keyword: kw + " 비교", monthlyPcQcCnt: null, monthlyMobileQcCnt: null },
+        ],
+        before: [kw + " 종류", kw + " 정보", "관련 카테고리 탐색"],
+        after: [kw + " 사용법", kw + " 관리", kw + " 액세서리"],
+        intent: `"${kw}" 검색자 의도 추정`,
+        sub: "의미 기반 추론"
+      };
+    }
+  }
+
   if (!isReal) keywords = local.keywords;
 
   render(kw, keywords, local, isReal, errorMsg);
