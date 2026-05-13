@@ -382,22 +382,21 @@ function render(kw, keywords, local, isReal, errorMsg) {
   const main = document.getElementById('main');
   const maxVol = Math.max(...keywords.map(k => (k.monthlyPcQcCnt || 0) + (k.monthlyMobileQcCnt || 0)), 1);
 
-  const tableRows = keywords.map(k => {
+  const sortedKeywords = [...keywords].sort((a, b) => {
+    const totalA = (a.monthlyPcQcCnt || 0) + (a.monthlyMobileQcCnt || 0);
+    const totalB = (b.monthlyPcQcCnt || 0) + (b.monthlyMobileQcCnt || 0);
+    return totalB - totalA;
+  });
+
+  const tableRows = sortedKeywords.map((k, i) => {
     const total = (k.monthlyPcQcCnt || 0) + (k.monthlyMobileQcCnt || 0);
-    const pct = Math.round((total / maxVol) * 100);
     return `
       <tr>
+        <td style="color:var(--text-hint);font-size:0.78rem;width:28px">${i + 1}</td>
         <td class="kw-name" onclick="quickSearch('${k.keyword.replace(/'/g,"\\'")}')">🔍 ${k.keyword}</td>
         <td>${k.monthlyPcQcCnt !== null ? fmtVol(k.monthlyPcQcCnt) : '-'}</td>
         <td>${k.monthlyMobileQcCnt !== null ? fmtVol(k.monthlyMobileQcCnt) : '-'}</td>
-        <td><strong>${total > 0 ? fmtVol(total) : '-'}</strong></td>
-        <td style="min-width:110px">
-          ${total > 0 ? `
-            <div style="display:flex;align-items:center;gap:6px;">
-              <div class="vol-bar" style="flex:1"><div class="vol-fill" style="width:${pct}%"></div></div>
-              <span style="font-size:0.75rem;color:var(--text-muted);min-width:32px">${pct}%</span>
-            </div>` : '-'}
-        </td>
+        <td><strong style="color:var(--accent)">${total > 0 ? fmtVol(total) : '-'}</strong></td>
       </tr>`;
   }).join('');
 
@@ -415,7 +414,7 @@ function render(kw, keywords, local, isReal, errorMsg) {
     </div>
     <div style="overflow-x:auto; margin-bottom:2rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
       <table class="kw-table">
-        <thead><tr><th>키워드</th><th>PC 검색량</th><th>모바일 검색량</th><th>총 검색량</th><th>상대적 검색 비중 (1위 대비)</th></tr></thead>
+        <thead><tr><th>#</th><th>키워드</th><th>PC 검색량</th><th>모바일 검색량</th><th>총 검색량 ↓</th></tr></thead>
         <tbody>${tableRows}</tbody>
       </table>
     </div>
