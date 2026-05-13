@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<!-- saved from url=(0062)file:///C:/Users/khj92/Downloads/keyword-research-naver_2.html -->
-<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>키워드 연관어 분석기</title>
-<link href="./index.html_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -171,21 +172,21 @@
   <div class="api-fields">
     <div class="api-field">
       <label>Customer ID</label>
-      <input type="password" id="customerId" placeholder="숫자로 된 고객 ID">
+      <input type="password" id="customerId" placeholder="숫자로 된 고객 ID" />
     </div>
     <div class="api-field">
       <label>액세스라이선스</label>
-      <input type="password" id="accessLicense" placeholder="액세스라이선스 키">
+      <input type="password" id="accessLicense" placeholder="액세스라이선스 키" />
     </div>
     <div class="api-field">
       <label>비밀키</label>
-      <input type="password" id="secretKey" placeholder="비밀키">
+      <input type="password" id="secretKey" placeholder="비밀키" />
     </div>
   </div>
   <div class="api-actions">
     <button class="btn-save" onclick="saveKeys()">저장하기</button>
     <button class="btn-clear" onclick="clearKeys()">초기화</button>
-    <span class="api-status status-ok" id="apiStatus">✅ 저장된 키 불러옴</span>
+    <span class="api-status" id="apiStatus"></span>
   </div>
   <div class="api-notice">
     🔒 입력한 키는 이 브라우저에만 저장되며 외부로 전송되지 않습니다.<br>
@@ -195,160 +196,25 @@
 </details>
 
 <div class="search-wrap">
-  <input type="text" id="kwInput" placeholder="키워드를 입력하세요 (예: 1인 리클라이너)">
+  <input type="text" id="kwInput" placeholder="키워드를 입력하세요 (예: 1인 리클라이너)" />
   <button onclick="analyze()">분석하기</button>
 </div>
 
 <div class="examples">
   <span>예시 →</span>
-  <button class="ex-chip" onclick="quickSearch(&#39;1인 리클라이너&#39;)">1인 리클라이너</button>
-  <button class="ex-chip" onclick="quickSearch(&#39;노트북 추천&#39;)">노트북 추천</button>
-  <button class="ex-chip" onclick="quickSearch(&#39;러닝화&#39;)">러닝화</button>
-  <button class="ex-chip" onclick="quickSearch(&#39;원룸 인테리어&#39;)">원룸 인테리어</button>
-  <button class="ex-chip" onclick="quickSearch(&#39;다이어트 식단&#39;)">다이어트 식단</button>
+  <button class="ex-chip" onclick="quickSearch('1인 리클라이너')">1인 리클라이너</button>
+  <button class="ex-chip" onclick="quickSearch('노트북 추천')">노트북 추천</button>
+  <button class="ex-chip" onclick="quickSearch('러닝화')">러닝화</button>
+  <button class="ex-chip" onclick="quickSearch('원룸 인테리어')">원룸 인테리어</button>
+  <button class="ex-chip" onclick="quickSearch('다이어트 식단')">다이어트 식단</button>
 </div>
 
 <main id="main">
-    <div class="error-box">⚠️ CORS 오류: 네이버 API는 브라우저에서 직접 호출이 제한됩니다. 아래 추정 데이터로 대신 표시합니다.</div>
-
-    <div class="intent-banner">
-      <strong>구매 전 비교 탐색 단계</strong> — "1인 리클라이너"
-      <div class="sub">가격·소재·브랜드를 비교하는 중</div>
-    </div>
-
-    <div class="section-label" style="margin-bottom:10px">
-      연관 키워드 + 월간 검색량
-      <span class="source-badge badge-estimate">추정치</span>
-    </div>
-    <div style="overflow-x:auto; margin-bottom:2rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
-      <table class="kw-table">
-        <thead><tr><th>키워드</th><th>PC 검색량</th><th>모바일 검색량</th><th>비율</th></tr></thead>
-        <tbody>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인 리클라이너 소파&#39;)">🔍 1인 리클라이너 소파</td>
-        <td>1200+</td>
-        <td>4800+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:61%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인 리클라이너 추천&#39;)">🔍 1인 리클라이너 추천</td>
-        <td>800</td>
-        <td>3200+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:40%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;리클라이너 소파&#39;)">🔍 리클라이너 소파</td>
-        <td>2100+</td>
-        <td>7800+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:100%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;안락의자&#39;)">🔍 안락의자</td>
-        <td>1500+</td>
-        <td>5500+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:71%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인용 소파&#39;)">🔍 1인용 소파</td>
-        <td>900</td>
-        <td>3800+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:47%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인 리클라이너 가죽&#39;)">🔍 1인 리클라이너 가죽</td>
-        <td>600</td>
-        <td>2400+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:30%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;리클라이너 의자&#39;)">🔍 리클라이너 의자</td>
-        <td>1800+</td>
-        <td>6200+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:81%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인 리클라이너 패브릭&#39;)">🔍 1인 리클라이너 패브릭</td>
-        <td>400</td>
-        <td>1800+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:22%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;홈시네마 의자&#39;)">🔍 홈시네마 의자</td>
-        <td>700</td>
-        <td>2900+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:36%"></div></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="kw-name" onclick="quickSearch(&#39;1인용 소파베드&#39;)">🔍 1인용 소파베드</td>
-        <td>1100+</td>
-        <td>4200+</td>
-        <td style="min-width:80px">
-          <div class="vol-bar"><div class="vol-fill" style="width:54%"></div></div>
-        </td>
-      </tr></tbody>
-      </table>
-    </div>
-
-    <div class="journey-grid">
-      <div class="journey-card">
-        <div class="journey-card-title">← 검색 이전 예상 키워드</div>
-        <div class="badge badge-before">BEFORE</div>
-        <div class="journey-item"><span class="dot dot-blue"></span>소파 추천</div><div class="journey-item"><span class="dot dot-blue"></span>1인용 가구</div><div class="journey-item"><span class="dot dot-blue"></span>거실 소파 종류</div><div class="journey-item"><span class="dot dot-blue"></span>홈인테리어</div><div class="journey-item"><span class="dot dot-blue"></span>안락의자 추천</div><div class="journey-item"><span class="dot dot-blue"></span>소파 브랜드</div><div class="journey-item"><span class="dot dot-blue"></span>거실 꾸미기</div><div class="journey-item"><span class="dot dot-blue"></span>1인 가구 필수템</div><div class="journey-item"><span class="dot dot-blue"></span>가구 쇼핑몰</div><div class="journey-item"><span class="dot dot-blue"></span>소파 소재 비교</div>
-        <p class="note">
-          <strong style="color:var(--text-muted)">추론 근거</strong><br>
-          사람들은 보통 <em>넓은 범주 → 좁은 범주</em> 순서로 탐색합니다. 구체적인 제품명을 검색하기 전, 상위 카테고리나 "추천" 키워드로 먼저 시장을 파악하는 패턴에서 도출했습니다.<br><br>
-          <span style="color:var(--text-hint)">※ 실제 세션 데이터가 아닌 의미 기반 추론입니다. 실데이터는 GA4·네이버 광고 보고서에서 확인 가능합니다.</span>
-        </p>
-      </div>
-      <div class="journey-card">
-        <div class="journey-card-title">→ 검색 이후 예상 키워드</div>
-        <div class="badge badge-after">AFTER</div>
-        <div class="journey-item"><span class="dot dot-green"></span>리클라이너 커버</div><div class="journey-item"><span class="dot dot-green"></span>소파 청소 방법</div><div class="journey-item"><span class="dot dot-green"></span>가구 배송</div><div class="journey-item"><span class="dot dot-green"></span>방수 커버</div><div class="journey-item"><span class="dot dot-green"></span>소파 관리법</div><div class="journey-item"><span class="dot dot-green"></span>리클라이너 부품</div><div class="journey-item"><span class="dot dot-green"></span>가죽 소파 세정제</div><div class="journey-item"><span class="dot dot-green"></span>소파 조립 방법</div><div class="journey-item"><span class="dot dot-green"></span>가구 AS 후기</div><div class="journey-item"><span class="dot dot-green"></span>소파 발판 교체</div>
-        <p class="note">
-          <strong style="color:var(--text-muted)">추론 근거</strong><br>
-          구매 결정 후에는 <em>관리·부속품·사용법</em>으로 관심이 이동하는 패턴에서 도출했습니다. 쇼핑 후기, 커뮤니티 Q&amp;A에서 반복적으로 등장하는 구매 후 고민들을 카테고리화했습니다.<br><br>
-          <span style="color:var(--text-hint)">※ 실제 세션 데이터가 아닌 카테고리·의미 기반 추론입니다.</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="section-label" style="margin-bottom:12px">함께 활용하면 좋은 도구</div>
-    <div class="tools-grid">
-      <a class="tool-card" href="https://datalab.naver.com/" target="_blank">
-        <div class="tool-name">네이버 데이터랩</div>
-        <div class="tool-desc">트렌드, 쇼핑 인사이트, 연령/성별 분포</div>
-        <span class="tool-tag">무료</span>
-      </a>
-      <a class="tool-card" href="https://searchad.naver.com/" target="_blank">
-        <div class="tool-name">네이버 검색광고</div>
-        <div class="tool-desc">키워드 도구 — 월간 검색량 직접 조회</div>
-        <span class="tool-tag">무료 (계정 필요)</span>
-      </a>
-      <a class="tool-card" href="https://trends.google.com/trends/?geo=KR" target="_blank">
-        <div class="tool-name">Google Trends</div>
-        <div class="tool-desc">관련 검색어, 지역·시기별 트렌드</div>
-        <span class="tool-tag">무료</span>
-      </a>
-    </div>
-  </main>
+  <div class="empty-state">
+    <span class="ico">🔍</span>
+    <p>키워드를 입력하고 분석하기를 눌러보세요</p>
+  </div>
+</main>
 
 <script>
 // ───── 로컬 저장 ─────
@@ -524,8 +390,13 @@ function render(kw, keywords, local, isReal, errorMsg) {
         <td class="kw-name" onclick="quickSearch('${k.keyword.replace(/'/g,"\\'")}')">🔍 ${k.keyword}</td>
         <td>${k.monthlyPcQcCnt !== null ? fmtVol(k.monthlyPcQcCnt) : '-'}</td>
         <td>${k.monthlyMobileQcCnt !== null ? fmtVol(k.monthlyMobileQcCnt) : '-'}</td>
-        <td style="min-width:80px">
-          ${total > 0 ? `<div class="vol-bar"><div class="vol-fill" style="width:${pct}%"></div></div>` : '-'}
+        <td><strong>${total > 0 ? fmtVol(total) : '-'}</strong></td>
+        <td style="min-width:110px">
+          ${total > 0 ? `
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div class="vol-bar" style="flex:1"><div class="vol-fill" style="width:${pct}%"></div></div>
+              <span style="font-size:0.75rem;color:var(--text-muted);min-width:32px">${pct}%</span>
+            </div>` : '-'}
         </td>
       </tr>`;
   }).join('');
@@ -544,7 +415,7 @@ function render(kw, keywords, local, isReal, errorMsg) {
     </div>
     <div style="overflow-x:auto; margin-bottom:2rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
       <table class="kw-table">
-        <thead><tr><th>키워드</th><th>PC 검색량</th><th>모바일 검색량</th><th>비율</th></tr></thead>
+        <thead><tr><th>키워드</th><th>PC 검색량</th><th>모바일 검색량</th><th>총 검색량</th><th>상대적 검색 비중 (1위 대비)</th></tr></thead>
         <tbody>${tableRows}</tbody>
       </table>
     </div>
@@ -605,6 +476,5 @@ document.getElementById('kwInput').addEventListener('keydown', e => {
 // 페이지 로드 시 저장된 키 불러오기
 window.addEventListener('load', loadKeys);
 </script>
-
-
-</body></html>
+</body>
+</html>
