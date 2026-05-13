@@ -157,6 +157,13 @@
   .tool-card .tool-tag { display: inline-block; font-size: 0.68rem; padding: 2px 7px; border-radius: var(--radius-pill); margin-top: 8px; background: var(--bg); color: var(--text-hint); border: 1px solid var(--border); }
 
   .error-box { background: var(--red-bg); border: 1px solid var(--red-border); border-radius: var(--radius); padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--red-text); margin-bottom: 1.5rem; line-height: 1.6; }
+  .history-bar { padding: 0.6rem 2rem; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--border); background: var(--bg); }
+  .history-bar span { font-size: 0.75rem; color: var(--text-hint); white-space: nowrap; }
+  .history-chip { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; padding: 4px 8px 4px 12px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-muted); }
+  .history-chip button.kw-btn { background: none; border: none; cursor: pointer; font-family: inherit; font-size: 0.78rem; color: var(--text-muted); padding: 0; }
+  .history-chip button.kw-btn:hover { color: var(--text); }
+  .history-chip button.del-btn { background: none; border: none; cursor: pointer; color: var(--text-hint); font-size: 0.9rem; padding: 0; line-height: 1; display: flex; align-items: center; }
+  .history-chip button.del-btn:hover { color: var(--red-text); }
 </style>
 </head>
 <body>
@@ -208,6 +215,10 @@
   <button class="ex-chip" onclick="quickSearch('원룸 인테리어')">원룸 인테리어</button>
   <button class="ex-chip" onclick="quickSearch('다이어트 식단')">다이어트 식단</button>
 </div>
+<div class="history-bar" id="historyBar" style="display:none">
+  <span>최근 검색 →</span>
+  <div id="historyChips" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;"></div>
+</div>
 
 <main id="main">
   <div class="empty-state">
@@ -255,6 +266,40 @@ function loadKeys() {
   if (sec) document.getElementById('secretKey').value = sec;
   if (cid && lic && sec) setStatus('✅ 저장된 키 불러옴', true);
   return { cid, lic, sec };
+}
+
+// ───── 검색 히스토리 ─────
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem('kw_history') || '[]'); } catch { return []; }
+}
+
+function addHistory(kw) {
+  let history = getHistory();
+  history = history.filter(k => k !== kw);
+  history.unshift(kw);
+  localStorage.setItem('kw_history', JSON.stringify(history));
+  renderHistory();
+}
+
+function deleteHistory(kw) {
+  let history = getHistory().filter(k => k !== kw);
+  localStorage.setItem('kw_history', JSON.stringify(history));
+  renderHistory();
+}
+
+function renderHistory() {
+  const history = getHistory();
+  const bar = document.getElementById('historyBar');
+  const chips = document.getElementById('historyChips');
+  if (!bar || !chips) return;
+  if (history.length === 0) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  chips.innerHTML = history.slice(0, 5).map(kw => `
+    <span class="history-chip">
+      <button class="kw-btn" onclick="quickSearch('${kw.replace(/'/g, "\\'")}')">🕐 ${kw}</button>
+      <button class="del-btn" onclick="deleteHistory('${kw.replace(/'/g, "\\'")}')">×</button>
+    </span>
+  `).join('');
 }
 
 // ───── 검색량 포맷 ─────
@@ -353,6 +398,7 @@ async function analyze() {
   const kw = document.getElementById('kwInput').value.trim();
   if (!kw) return;
 
+  addHistory(kw);
   const main = document.getElementById('main');
   main.innerHTML = `<div class="loading-msg"><span class="spinner"></span> 분석 중...</div>`;
 
@@ -473,7 +519,7 @@ document.getElementById('kwInput').addEventListener('keydown', e => {
 });
 
 // 페이지 로드 시 저장된 키 불러오기
-window.addEventListener('load', loadKeys);
+window.addEventListener('load', () => { loadKeys(); renderHistory(); });
 </script>
 </body>
 </html>
